@@ -49,11 +49,11 @@ public class Main {
         int total = 0;
 
         while (true) {
-            month++;
+            total += 15000;
             if (month % 6 == 0) {
                 total *= 1.07;
             }
-            total += 15000;
+            month++;
             System.out.println("Месяц " + month + " сумма " + total);
             if (total >= 12_000_000) {
                 break;
@@ -71,15 +71,14 @@ public class Main {
                 overheats++;
                 System.out.println("Перегрев");
             }
-            if (minute >= 10 && minute % 10 <= 3) {
-                if (overheats <= 3) {
-                    continue;
-                } else {
-                    System.out.println("Досрочное завершение задания");
-                    break;
-                }
+            if (minute >= 10 && minute % 10 < 3) {
+                continue;
             }
             charge += 2;
+            if (overheats > 3) {
+                System.out.println("Досрочное завершение задания");
+                break;
+            }
         }
         System.out.println("Время зарядки составило " + minute + " минут");
     }
