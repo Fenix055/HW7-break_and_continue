@@ -65,14 +65,14 @@ public class Main {
         short minute = 0;
         byte overheats = 0;
 
-        while (charge < 100 && overheats < 3) {
+        while (charge < 100 && overheats <= 3) {
             minute++;
             if (minute % 10 == 0) {
                 overheats++;
                 System.out.println("Перегрев");
             }
-            if (minute >= 10 && minute % 10 <= 2) {
-                if (overheats < 3) {
+            if (minute >= 10 && minute % 10 <= 3) {
+                if (overheats <= 3) {
                     continue;
                 } else {
                     System.out.println("Досрочное завершение задания");
