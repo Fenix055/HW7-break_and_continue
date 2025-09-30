@@ -66,12 +66,13 @@ public class Main {
         byte overheats = 0;
 
         while (charge < 100 && overheats <= 3) {
+            minute++;
             if (minute % 10 == 0) {
                 overheats++;
                 System.out.println("Перегрев");
-                minute+=2;
+                minute += 2;
+                continue;
             }
-            minute++;
             charge += 2;
             if (overheats > 3) {
                 System.out.println("Досрочное завершение задания");
