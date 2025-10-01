@@ -65,7 +65,11 @@ public class Main {
         short minute = 0;
         byte overheats = 0;
 
-        while (charge < 100 && overheats <= 3) {
+        while (charge < 100) {
+            if (overheats > 3) {
+                System.out.println("Досрочное завершение задания");
+                break;
+            }
             minute++;
             if (minute % 10 == 0) {
                 overheats++;
@@ -74,10 +78,6 @@ public class Main {
                 continue;
             }
             charge += 2;
-            if (overheats > 3) {
-                System.out.println("Досрочное завершение задания");
-                break;
-            }
         }
         System.out.println("Время зарядки составило " + minute + " минут");
     }
